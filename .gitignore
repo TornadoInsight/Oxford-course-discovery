@@ -1,0 +1,41 @@
+# Composer / vendor
+/vendor/
+/bin/composer
+/bin/wp
+
+# WordPress core — pulled via `composer install`, never committed
+/wordpress/*
+!/wordpress/wp-content
+/wordpress/wp-content/*
+!/wordpress/wp-content/plugins
+/wordpress/wp-content/plugins/*
+!/wordpress/wp-content/plugins/course-discovery
+!/wordpress/wp-content/mu-plugins
+/wordpress/wp-content/uploads/
+/wordpress/wp-content/upgrade/
+/wordpress/wp-content/cache/
+
+# Our plugin's own vendor/build output
+/wordpress/wp-content/plugins/course-discovery/vendor/
+/wordpress/wp-content/plugins/course-discovery/assets/build/
+/wordpress/wp-content/plugins/course-discovery/node_modules/
+
+# Env / secrets
+.env
+*.log
+.phpunit.result.cache
+
+# DB exports (kept locally, sent separately, not committed)
+/db-export/
+
+# Node
+node_modules/
+/e2e/test-results/
+/e2e/playwright-report/
+
+.claude/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/

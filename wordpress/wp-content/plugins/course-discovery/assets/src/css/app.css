@@ -1,0 +1,232 @@
+.course-discovery {
+  --cd-border: #d0d5dd;
+  --cd-primary: #0b4f6c;
+  --cd-primary-contrast: #ffffff;
+  --cd-bg-muted: #f7f8fa;
+  --cd-radius: 6px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1d2939;
+}
+
+.course-discovery *:focus-visible {
+  outline: 3px solid var(--cd-primary);
+  outline-offset: 2px;
+}
+
+.course-discovery__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  background: var(--cd-bg-muted);
+  border: 1px solid var(--cd-border);
+  border-radius: var(--cd-radius);
+  margin-bottom: 1.5rem;
+}
+
+.course-discovery__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 180px;
+}
+
+.course-discovery__field legend,
+.course-discovery__field > label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.course-discovery__field input[type="search"] {
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--cd-border);
+  border-radius: var(--cd-radius);
+  min-width: 220px;
+}
+
+.course-discovery__checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.course-discovery__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.course-discovery__field--actions {
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.course-discovery__field--actions button {
+  background: var(--cd-primary);
+  color: var(--cd-primary-contrast);
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--cd-radius);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.course-discovery__field--actions a {
+  color: var(--cd-primary);
+  align-self: center;
+}
+
+/* Combobox (button + listbox popup) */
+.cd-combobox {
+  position: relative;
+}
+
+.cd-combobox__native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.cd-combobox__trigger {
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--cd-border);
+  border-radius: var(--cd-radius);
+  background: #fff;
+  cursor: pointer;
+}
+
+.cd-combobox__trigger[aria-expanded="true"] {
+  border-color: var(--cd-primary);
+}
+
+.cd-combobox__popup {
+  position: absolute;
+  z-index: 20;
+  margin-top: 0.25rem;
+  width: 100%;
+  min-width: 220px;
+  max-height: 220px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid var(--cd-border);
+  border-radius: var(--cd-radius);
+  box-shadow: 0 6px 16px rgba(16, 24, 40, 0.12);
+}
+
+.cd-combobox__option {
+  padding: 0.45rem 0.65rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.cd-combobox__option.is-active {
+  background: var(--cd-bg-muted);
+}
+
+.cd-combobox__option.is-selected::before {
+  content: "✓ ";
+}
+
+.course-discovery__meta {
+  font-size: 0.9rem;
+  color: #475467;
+  margin-bottom: 0.75rem;
+}
+
+.course-discovery__results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.course-discovery__card {
+  border: 1px solid var(--cd-border);
+  border-radius: var(--cd-radius);
+  padding: 1rem;
+}
+
+.course-discovery__card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.course-discovery__card a {
+  color: var(--cd-primary);
+  text-decoration: none;
+}
+
+.course-discovery__excerpt {
+  font-size: 0.9rem;
+  color: #475467;
+}
+
+.course-discovery__facts {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  margin: 0.75rem 0 0;
+}
+
+.course-discovery__facts > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.course-discovery__facts dt {
+  color: #667085;
+}
+
+.course-discovery__facts dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
+
+.course-discovery__empty {
+  grid-column: 1 / -1;
+  padding: 2rem;
+  text-align: center;
+  color: #667085;
+}
+
+.course-discovery__pagination {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+}
+
+.course-discovery__pagination a {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--cd-border);
+  border-radius: var(--cd-radius);
+  color: var(--cd-primary);
+  text-decoration: none;
+}
+
+.course-discovery__pagination a[aria-current="page"] {
+  background: var(--cd-primary);
+  color: #fff;
+  border-color: var(--cd-primary);
+}
+
+@media (max-width: 640px) {
+  .course-discovery__filters {
+    flex-direction: column;
+  }
+}

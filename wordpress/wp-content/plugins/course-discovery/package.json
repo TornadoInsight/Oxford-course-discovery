@@ -1,0 +1,11 @@
+{
+  "name": "course-discovery-assets",
+  "private": true,
+  "scripts": {
+    "build": "esbuild assets/src/js/app.js --bundle --minify --outfile=assets/build/app.js && esbuild assets/src/css/app.css --minify --outfile=assets/build/app.css",
+    "dev": "esbuild assets/src/js/app.js --bundle --outfile=assets/build/app.js --watch & esbuild assets/src/css/app.css --outfile=assets/build/app.css --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.23.0"
+  }
+}

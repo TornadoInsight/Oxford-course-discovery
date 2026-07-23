@@ -1,0 +1,32 @@
+{
+    "name": "oxford-international/course-discovery-plugin",
+    "description": "Course Discovery domain, filters, and REST API",
+    "type": "wordpress-plugin",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6",
+        "yoast/wp-test-utils": "^1.2",
+        "squizlabs/php_codesniffer": "^3.9",
+        "phpstan/phpstan": "^1.11",
+        "wp-phpunit/wp-phpunit": "^6.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "CourseDiscovery\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CourseDiscovery\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "minimum-stability": "stable"
+}
