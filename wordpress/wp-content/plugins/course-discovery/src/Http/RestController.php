@@ -71,12 +71,12 @@ final class RestController
         $criteria = CriteriaFactory::fromRequest($request);
         $context = new FilterContext($criteria);
 
+        // Every registered filter is always listed, even with zero current options — a
+        // filter with no matches today may gain them the moment new data is added, and
+        // third-party filters shouldn't have to guess whether they'll be visible.
         $filters = [];
         foreach ($this->registry->all() as $filter) {
             $options = $filter->options($context);
-            if ($options === [] && $filter->key() !== 'search') {
-                continue;
-            }
 
             $filters[] = [
                 'key' => $filter->key(),

@@ -16,6 +16,8 @@ define('DB_COLLATE', '');
 
 $table_prefix = 'wptests_';
 
+define('ABSPATH', dirname(__DIR__, 4) . '/');
+
 define('WP_TESTS_DOMAIN', 'example.org');
 define('WP_TESTS_EMAIL', 'admin@example.org');
 define('WP_TESTS_TITLE', 'Course Discovery Test Suite');

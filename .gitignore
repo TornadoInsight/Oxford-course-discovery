@@ -2,6 +2,7 @@
 /vendor/
 /bin/composer
 /bin/wp
+/bin/ngrok
 
 # WordPress core — pulled via `composer install`, never committed
 /wordpress/*

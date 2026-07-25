@@ -39,9 +39,7 @@ abstract class FilterContractTestCase extends TestCase
     {
         $context = new FilterContext(FilterCriteria::fromArray([]));
 
-        foreach ($this->makeFilter()->options($context) as $option) {
-            self::assertInstanceOf(FilterOption::class, $option);
-        }
+        self::assertContainsOnlyInstancesOf(FilterOption::class, $this->makeFilter()->options($context));
     }
 
     public function test_apply_with_no_selected_values_does_not_change_the_query(): void
