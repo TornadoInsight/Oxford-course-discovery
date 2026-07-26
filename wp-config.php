@@ -8,6 +8,15 @@
 $root_dir = __DIR__;
 $wp_dir   = $root_dir . '/wordpress';
 
+// Behind a TLS-terminating tunnel (ngrok) or reverse proxy, the request that
+// reaches PHP is always plain HTTP — without this, is_ssl() returns false,
+// WordPress thinks it needs to force a redirect to HTTPS, and since the
+// client already used HTTPS the "fixed" URL is identical to the one just
+// requested, causing an infinite redirect loop (this is what broke wp-admin).
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
+
 // --- Minimal .env loader (no external dependency) ---------------------------
 $env_file = $root_dir . '/.env';
 if (file_exists($env_file)) {

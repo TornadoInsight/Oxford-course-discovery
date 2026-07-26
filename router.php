@@ -10,9 +10,22 @@ $wp_dir = __DIR__ . '/wordpress';
 $path   = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $file   = $wp_dir . $path;
 
-// Let the built-in server serve real files (assets, uploads) as-is.
-if ($path !== '/' && file_exists($file) && !is_dir($file)) {
-    return false;
+if ($path !== '/') {
+    // A real directory (e.g. /wp-admin/) needs its own index.php run explicitly —
+    // the built-in server has no directory-index resolution when a router script
+    // is in play, so without this, "/wp-admin/" silently fell through to WP's
+    // front-end index.php below and rendered the homepage instead of wp-admin.
+    if (is_dir($file)) {
+        $indexFile = rtrim($file, '/') . '/index.php';
+        if (file_exists($indexFile)) {
+            chdir(dirname($indexFile));
+            require $indexFile;
+            return true;
+        }
+    } elseif (file_exists($file)) {
+        // Let the built-in server serve real files (assets, uploads) as-is.
+        return false;
+    }
 }
 
 chdir($wp_dir);
